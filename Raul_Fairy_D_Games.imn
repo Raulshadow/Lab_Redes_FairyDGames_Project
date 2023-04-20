@@ -40,50 +40,31 @@ node n2 {
 	!
     }
     canvas c1
-    iconcoords {192.0 221.0}
-    labelcoords {188.0 270.0}
+    iconcoords {193.0 221.0}
+    labelcoords {189.0 270.0}
     interface-peer {eth0 n1}
     custom-config {
 	custom-config-id service:UserDefined
 	custom-command UserDefined
 	config {
-	files=('O_Servidor.py', )
-	cmdup=('python O_Servidor.py', )
+	files=('fairyDGames.html', )
+	cmdup=('python O_Servidor.py', 'python -m SimpleHTTPServer 80', )
 	meta=Servidor.
 	}
     }
     custom-config {
-	custom-config-id service:UserDefined:O_Servidor.py
-	custom-command O_Servidor.py
+	custom-config-id service:UserDefined:fairyDGames.html
+	custom-command fairyDGames.html
 	config {
-	from socket import *
-	
-	portaServidor = 12000
-	
-	socketServidor = socket (AF_INET, SOCK_STREAM)
-	
-	socketServidor.bind (('192.0.2.10', portaServidor))
-	
-	socketServidor.listen (1)
-	
-	# Python 2
-	print "O servidor esta pronto para receber"
-	
-	# Python 3
-	#print ("O servidor esta pronto para receber")
-	
-	while 1 :
-	
-	    socketConexao, endereco = socketServidor.accept ()
-	
-	    frase = socketConexao.recv (1024)
-	
-	    fraseMaiscula = frase.upper ()
-	
-	    socketConexao.send (fraseMaiscula)
-	
-	    socketConexao.close ()
-	
+	<!DOCTYPE html>
+	<html>
+	<head>
+		<title>FAIRY D GAMES</title>
+	</head>
+	<body>
+		<p>Este é a Fairy D Games, uma empresa baseada para criação de jogos RPG </p>
+	</body>
+	</html>
 	}
     }
     services {DefaultRoute SSH UserDefined}
